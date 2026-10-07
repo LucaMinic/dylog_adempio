@@ -1,4 +1,5 @@
 import { asset, BrandField, Eyebrow, Icon, SmartLink } from '../components/ui.jsx'
+import { CookiePreferencesLink } from '../components/consent/CookieConsent.jsx'
 
 const ADEMPIO_URL = 'https://eccotest-adempio-test.azurewebsites.net/'
 
@@ -74,8 +75,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div aria-hidden="true" className="wrap pb-8 md:pb-12">
-        <div className="h-px w-24 bg-white/60 md:w-40" />
+      <div className="wrap flex items-center justify-between gap-6 pb-8 md:pb-12">
+        <div aria-hidden="true" className="h-px w-24 bg-white/60 md:w-40" />
+        <CookiePreferencesLink className="text-white/80 hover:text-white" />
       </div>
     </section>
   )

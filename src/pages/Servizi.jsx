@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { areas } from '../content/areas.js'
 import { asset, Eyebrow, Reveal } from '../components/ui.jsx'
+import { CookiePreferencesLink } from '../components/consent/CookieConsent.jsx'
 
 // Le aree senza sotto-aree (Marchi, Varie) elencano i servizi diretti.
 const DIRECT = ['marchi', 'varie']
@@ -66,6 +67,12 @@ export default function Servizi() {
           </p>
         </Reveal>
       </section>
+
+      <footer className="border-t border-line">
+        <div className="wrap flex justify-end py-6">
+          <CookiePreferencesLink className="text-muted hover:text-ink" />
+        </div>
+      </footer>
     </>
   )
 }

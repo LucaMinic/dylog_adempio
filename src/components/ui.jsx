@@ -17,6 +17,7 @@ const ICONS = {
   play: <path d="M8 5.5v13l10.5-6.5L8 5.5Z" />,
   pause: <path d="M8 5v14M16 5v14" />,
   userPlus: <path d="M10 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-6.5 8a6.5 6.5 0 0 1 13 0M19 8v6m-3-3h6" />,
+  shield: <path d="M12 3 5 6v5c0 4.5 3 8.5 7 10 4-1.5 7-5.5 7-10V6l-7-3Zm-3 9 2 2 4-4" />,
 }
 
 export function Icon({ name, className = 'size-5', strokeWidth = 1.5 }) {
