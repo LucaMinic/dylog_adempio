@@ -1,0 +1,247 @@
+@import "@fontsource-variable/hanken-grotesk";
+@import "tailwindcss";
+
+/* Design token dalle Brand Guidelines Buffetti Group (marzo 2026). */
+@theme {
+  --font-sans: "Hanken Grotesk Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-brand: #0007e0;        /* Main Blu */
+  --color-brand-dark: #002685;   /* Dark Blu */
+  --color-brand-light: #426fde;  /* Light Blu */
+  --color-ink: #0b0b12;
+  --color-muted: #55555f;
+  --color-mist: #ebebeb;         /* Gray */
+  --color-paper: #ffffff;
+  --color-line: #d9d9de;
+
+  --ease-brand: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    scroll-padding-top: 6rem;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  body {
+    @apply bg-paper text-ink font-sans;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    font-feature-settings: "ss01";
+  }
+  @media (min-width: 768px) {
+    body { font-size: 1.125rem; }
+  }
+  ::selection { background: var(--color-brand); color: #fff; }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+  .on-dark :focus-visible { outline-color: #fff; }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* Reflow (WCAG 1.4.10): le parole molto lunghe vanno a capo invece di causare scorrimento orizzontale. */
+  h1, h2, h3, h4, p, li, dd, dt, label { overflow-wrap: anywhere; }
+  /* Numeri di indice e conteggi: mai spezzati. */
+  .tabular-nums { overflow-wrap: normal; white-space: nowrap; }
+}
+
+/* Contenitore con margini ≈ 1/25 del lato lungo (guideline layout system). */
+@utility wrap {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 80px);
+}
+
+/* Gerarchia tipografica (guideline p. 38–41): titoli Light, testo Regular, funzioni Bold. */
+@utility text-display {
+  font-weight: 300;
+  font-size: clamp(2.5rem, 1.6rem + 4.2vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+@utility text-h1 {
+  font-weight: 300;
+  font-size: clamp(2.25rem, 1.6rem + 2.8vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+@utility text-h2 {
+  font-weight: 400;
+  font-size: clamp(1.75rem, 1.35rem + 1.6vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+@utility text-h3 {
+  font-weight: 600;
+  font-size: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+@utility text-lead {
+  font-weight: 400;
+  font-size: clamp(1.1875rem, 1.05rem + 0.6vw, 1.5rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+@utility eyebrow {
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@utility section {
+  padding-block: clamp(4.5rem, 2rem + 8vw, 10rem);
+}
+
+/* Link testuale con sottolineatura che si disegna. */
+@utility link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 250ms var(--ease-brand);
+  &:hover { background-size: 100% 1px; }
+}
+
+/* Taglio a 45° sull'angolo in basso a destra (segno distintivo del logo). */
+@utility cut-corner {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut, 14px)), calc(100% - var(--cut, 14px)) 100%, 0 100%);
+}
+
+/* Testi lunghi (legali, schede informative). */
+@layer components {
+  .prose-ai {
+    max-width: 68ch;
+  }
+  .prose-ai > * + * { margin-top: 1.1em; }
+  .prose-ai h2 {
+    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    margin-top: 2.2em;
+  }
+  .prose-ai h3 { font-weight: 600; margin-top: 1.8em; }
+  .prose-ai ul { list-style: none; padding: 0; }
+  .prose-ai li { position: relative; padding-left: 1.5em; }
+  .prose-ai li + li { margin-top: 0.5em; }
+  .prose-ai li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.68em;
+    width: 0.6em;
+    height: 1px;
+    background: var(--color-brand);
+  }
+  .prose-ai a {
+    color: var(--color-brand);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    overflow-wrap: anywhere;
+  }
+  .prose-ai a:hover { text-decoration-thickness: 2px; }
+}
+
+/* Hero slider: zoom lento sulla foto attiva, ingresso del testo, barra di avanzamento. */
+@keyframes hero-kenburns {
+  from { transform: scale(1.12) translate3d(1.5%, 1%, 0); }
+  to { transform: scale(1) translate3d(0, 0, 0); }
+}
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes hero-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.hero-kenburns { animation: hero-kenburns 9s cubic-bezier(0.2, 0.6, 0.3, 1) both; }
+.hero-in > * { animation: hero-in 900ms var(--ease-brand) both; }
+.hero-in > *:nth-child(2) { animation-delay: 120ms; }
+.hero-in > *:nth-child(3) { animation-delay: 260ms; }
+.hero-progress { animation: hero-progress var(--slide-ms, 7000ms) linear both; }
+
+/* Foto: svelamento lungo la diagonale a 45° con leggero zoom in uscita. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal-photo] .reveal-photo {
+    clip-path: polygon(0 0, 0 0, 0 0);
+    transition: clip-path 1200ms var(--ease-brand);
+  }
+  .js [data-reveal-photo] .reveal-photo img {
+    transform: scale(1.06);
+    transition: transform 1600ms var(--ease-brand);
+  }
+  .js [data-reveal-photo].is-in .reveal-photo {
+    clip-path: polygon(0 0, 200% 0, 0 200%);
+  }
+  .js [data-reveal-photo].is-in .reveal-photo img {
+    transform: none;
+  }
+
+  /* Fili che si disegnano da sinistra a destra (sostituiscono il bordo superiore). */
+  .js .draw-line {
+    position: relative;
+    border-top-color: transparent;
+  }
+  .js .draw-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -1px;
+    height: 1px;
+    width: 100%;
+    background: var(--line-color, currentColor);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1100ms var(--ease-brand) 150ms;
+  }
+  .js .draw-line.is-in::before,
+  .js .is-in .draw-line::before {
+    transform: scaleX(1);
+  }
+
+  /* Elenchi: le voci compaiono in sequenza (--i = posizione, ritardo massimo ~0,6 s). */
+  .js [data-stagger] > * {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 600ms var(--ease-brand), transform 600ms var(--ease-brand);
+    transition-delay: calc(min(var(--i, 0), 8) * 70ms);
+  }
+  .js .is-in[data-stagger] > *,
+  .js .is-in [data-stagger] > * {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Reveal allo scroll: attivo solo con JS e senza riduzione del movimento. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 700ms var(--ease-brand), transform 700ms var(--ease-brand);
+  }
+  .js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
