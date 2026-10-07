@@ -3,9 +3,9 @@ import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
-// BASE_PATH: sottocartella di pubblicazione (es. "/dylog_adempio/" su GitHub Pages).
-// Di default il sito è servito dalla radice del dominio.
-export default defineConfig({
-  base: process.env.BASE_PATH || '/',
+// In build il sito è pubblicato su GitHub Pages in sottocartella (/dylog_adempio/);
+// BASE_PATH permette di cambiarla (es. "/" per un dominio proprio).
+export default defineConfig(({ command }) => ({
+  base: process.env.BASE_PATH || (command === 'build' ? '/dylog_adempio/' : '/'),
   plugins: [react(), tailwindcss()],
-})
+}))
