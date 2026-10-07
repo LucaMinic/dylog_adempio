@@ -58,9 +58,11 @@ export default function Servizi() {
         <Reveal className="wrap">
           <div aria-hidden="true" className="mb-10 h-px w-24 bg-brand md:w-40" />
           <p className="text-lead max-w-[52ch] text-balance">
-            Per registrarti, rivolgiti al tuo funzionario commerciale, che ti assisterà nella procedura di
-            pre-registrazione. Successivamente, un operatore di Agenzia Impresa S.A. ti contatterà per completare la
-            registrazione e fornirti le credenziali di accesso.
+            Per <strong className="font-semibold">registrarti</strong>, rivolgiti al{' '}
+            <strong className="font-semibold">tuo funzionario commerciale</strong>, che ti assisterà nella procedura di
+            pre-registrazione alla piattaforma ADEMPIO. Successivamente, un operatore di Agenzia Impresa provvederà a
+            contattarti per completare la registrazione, fornirti le credenziali di accesso e dare assistenza alle tue
+            richieste di servizio.
           </p>
         </Reveal>
       </section>
