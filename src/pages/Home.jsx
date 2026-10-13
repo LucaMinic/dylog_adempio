@@ -61,13 +61,13 @@ export default function Home() {
 
       <div className="wrap flex flex-1 flex-col justify-center py-20 md:py-28">
         <div className="hero-in max-w-[62rem]">
-          <Eyebrow className="mb-8 text-white">Agenzia Impresa · Buffetti Group</Eyebrow>
-          <h1 className="text-display max-w-[14ch] text-balance">Benvenuto in Agenziaimpresa</h1>
+          <Eyebrow className="mb-8 text-white">Agenzia Impresa · Dylog</Eyebrow>
+          <h1 className="text-display max-w-[14ch] text-balance">Benvenuto in Agenzia Impresa</h1>
           <div className="mt-12 grid max-w-[60rem] gap-4 md:mt-16 md:grid-cols-2 md:gap-6">
             <Action to="/servizi" index="01" label="Servizi" icon="arrow" variant="light">
               Esplora i nostri servizi
             </Action>
-            <Action to={ADEMPIO_URL} index="02" label="Adempio" icon="arrowUpRight" variant="glass">
+            <Action to={ADEMPIO_URL} index="02" label="Portale Adempio" icon="arrowUpRight" variant="glass">
               Se sei già registrato entra in Adempio per effettuare le tue richieste e verificare i relativi stati di
               avanzamento
             </Action>

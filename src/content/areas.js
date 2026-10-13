@@ -18,6 +18,7 @@ export const areas = [
       "Trasformazione file in XBRL",
       "Compilazione Elenco Soci",
       "Codice LEI – Legal Entity Identifier",
+      "Comunica",
       "Assistenza e approfondimenti sui quesiti specifici inerenti gli aspetti normativi e procedurali",
       "Diritto d’urgenza"
     ]

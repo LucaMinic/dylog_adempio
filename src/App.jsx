@@ -2,12 +2,15 @@ import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import Servizi from './pages/Servizi.jsx'
+import Listino from './pages/Listino.jsx'
+import { areas } from './content/areas.js'
 import { CookieConsent } from './components/consent/CookieConsent.jsx'
 
 const TITLES = {
   '/': 'Benvenuto in Agenzia Impresa – Buffetti Group',
   '/servizi': 'I nostri servizi – Agenzia Impresa',
 }
+for (const a of areas) TITLES[`/servizi/${a.slug}`] = `Listino ${a.title} – Agenzia Impresa`
 
 function RouteEffects() {
   const { pathname } = useLocation()
@@ -26,6 +29,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/servizi" element={<Servizi />} />
+          <Route path="/servizi/:slug" element={<Listino />} />
         </Routes>
       </main>
       <CookieConsent />

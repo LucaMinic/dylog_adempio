@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { areas } from '../content/areas.js'
 import { asset, Eyebrow, Reveal } from '../components/ui.jsx'
 import { CookiePreferencesLink } from '../components/consent/CookieConsent.jsx'
+import vetrina from '../foto vetrina.jpeg'
+import copertina from '../assets/listino-copertina.jpg'
 
 // Le aree senza sotto-aree (Marchi, Varie) elencano i servizi diretti.
 const DIRECT = ['marchi', 'varie']
@@ -15,12 +17,27 @@ function AreaRow({ area, index }) {
   return (
     <li
       style={{ '--i': index }}
-      className="grid grid-cols-[2.5rem_1fr] items-baseline gap-x-4 gap-y-2 border-t border-line py-6 md:grid-cols-[3rem_minmax(0,5fr)_minmax(0,6fr)_6.5rem] md:py-7"
+      className="grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 gap-y-2 border-t border-line py-6 md:grid-cols-[3rem_minmax(0,5fr)_minmax(0,6fr)_6.5rem_auto] md:py-7"
     >
       <span className="text-sm font-semibold text-brand tabular-nums">{String(index + 1).padStart(2, '0')}</span>
       <h2 className="text-[1.375rem] font-normal leading-tight tracking-[-0.015em] md:text-[1.625rem]">{area.title}</h2>
       <p className="col-start-2 text-sm leading-relaxed text-muted md:col-start-3 md:row-start-1">{area.subareas.join(' · ')}</p>
       <span className="col-start-2 text-sm text-muted tabular-nums md:col-start-4 md:row-start-1 md:text-right">{summary(area)}</span>
+      {/* Copertina del Listino 2026 come accesso ai prezzi dell'area. */}
+      <Link
+        to={`/servizi/${area.slug}`}
+        aria-label={`Listino ${area.title}`}
+        className="group col-start-3 row-start-1 flex flex-col items-center gap-1 self-center md:col-start-5"
+      >
+        <img
+          src={copertina}
+          alt=""
+          width="31"
+          height="44"
+          className="h-11 w-auto shadow-sm ring-1 ring-line transition-transform duration-200 group-hover:-translate-y-0.5"
+        />
+        <span className="text-xs font-semibold text-brand group-hover:text-brand-dark">Listino</span>
+      </Link>
     </li>
   )
 }
@@ -40,11 +57,23 @@ export default function Servizi() {
             />
           </Link>
 
-          <div className="mt-20 md:mt-28">
-            <Eyebrow className="mb-6 text-brand">Servizi</Eyebrow>
-            <h1 id="aree" className="text-h1 text-balance">
-              Aree di servizio
-            </h1>
+          <div className="mt-20 grid gap-10 md:mt-28 lg:grid-cols-2 lg:items-end lg:gap-16">
+            <div>
+              <Eyebrow className="mb-6 text-brand">Servizi</Eyebrow>
+              <h1 id="aree" className="text-h1 text-balance">
+                Aree di servizio
+              </h1>
+            </div>
+            <div>
+              <div aria-hidden="true" className="mb-6 h-px w-24 bg-brand md:w-40" />
+              <p className="max-w-[56ch] text-[1.0625rem] leading-relaxed md:text-lg">
+                Consulta le Aree di Servizio e i relativi adempimenti. Per richiedere uno o più servizi rivolgiti al{' '}
+                <strong className="font-extrabold">tuo funzionario commerciale</strong> Dylog che ti assisterà nella
+                procedura di pre-registrazione alla piattaforma ADEMPIO. Successivamente, un operatore di Agenzia Impresa
+                provvederà a contattarti per completare la registrazione, fornirti le credenziali di accesso e dare
+                assistenza alle tue richieste di servizio.
+              </p>
+            </div>
           </div>
 
           <Reveal as="ol" data-stagger="" className="mt-16 border-b border-line md:mt-20">
@@ -55,18 +84,15 @@ export default function Servizi() {
         </div>
       </section>
 
-      <section className="section">
-        <Reveal className="wrap">
-          <div aria-hidden="true" className="mb-10 h-px w-24 bg-brand md:w-40" />
-          <p className="text-lead max-w-[52ch] text-balance">
-            Per <strong className="font-extrabold">registrarti</strong>, rivolgiti al{' '}
-            <strong className="font-extrabold">tuo funzionario commerciale</strong>, che ti assisterà nella procedura di
-            pre-registrazione alla piattaforma ADEMPIO. Successivamente, un operatore di Agenzia Impresa provvederà a
-            contattarti per completare la registrazione, fornirti le credenziali di accesso e dare assistenza alle tue
-            richieste di servizio.
-          </p>
-        </Reveal>
-      </section>
+      <img
+        src={vetrina}
+        alt="Agenzia Impresa – Intermediari di adempimenti telematici verso la P.A. per Imprese e Professionisti."
+        width="1494"
+        height="833"
+        loading="lazy"
+        decoding="async"
+        className="block h-auto w-full"
+      />
 
       <footer className="border-t border-line">
         <div className="wrap flex justify-end py-6">
