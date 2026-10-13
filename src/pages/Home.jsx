@@ -1,7 +1,7 @@
 import { asset, BrandField, Eyebrow, Icon, SmartLink } from '../components/ui.jsx'
 import { CookiePreferencesLink } from '../components/consent/CookieConsent.jsx'
 
-const ADEMPIO_URL = 'https://eccotest-adempio-test.azurewebsites.net/'
+const ADEMPIO_URL = 'https://www.dylog.adempio.it/'
 
 /*
  * Le due azioni come riquadri distinti: "Servizi" pieno bianco (angolo a 45°), "Adempio" su vetro con filo bianco.
