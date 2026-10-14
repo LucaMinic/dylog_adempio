@@ -1,0 +1,10 @@
+# Build in sottocartella /landingdylog/ (npm run build:landingdylog).
+# Rotte client-side (es. /landingdylog/servizi): i percorsi che non sono file reali tornano a index.html.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /landingdylog/
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /landingdylog/index.html [L]
+</IfModule>

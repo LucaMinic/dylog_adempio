@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:landingdylog": "vite build --base=/landingdylog/ --outDir dist-landingdylog && node -e \"require('fs').copyFileSync('scripts/landingdylog.htaccess','dist-landingdylog/.htaccess')\"",
     "lint": "oxlint",
     "preview": "vite preview"
   },
