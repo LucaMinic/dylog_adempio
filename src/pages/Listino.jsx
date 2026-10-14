@@ -1,8 +1,10 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { areas } from '../content/areas.js'
 import { listino, NOTE_LISTINO } from '../content/listino.js'
-import { asset, Breadcrumb, Eyebrow, Reveal } from '../components/ui.jsx'
+import { asset, Breadcrumb, Button, Eyebrow, Reveal } from '../components/ui.jsx'
 import { CookiePreferencesLink } from '../components/consent/CookieConsent.jsx'
+
+const ADEMPIO_URL = 'https://www.dylog.adempio.it/'
 
 function Price({ value }) {
   const numeric = value.includes('€')
@@ -72,6 +74,18 @@ export default function Listino() {
             {NOTE_LISTINO.map((n) => (
               <p key={n}>{n}</p>
             ))}
+          </div>
+
+          {/* Invito alla registrazione su Adempio, preceduto dalla pre-registrazione con il funzionario DYLOG. */}
+          <div className="mt-16 flex flex-col gap-6 border-t border-line pt-10 md:mt-20 md:flex-row md:items-center md:justify-between md:gap-10">
+            <p className="max-w-[56ch] text-[1.0625rem] leading-relaxed">
+              Ricordati di contattare il{' '}
+              <strong className="font-extrabold">tuo funzionario commerciale DYLOG</strong> per la pre-registrazione
+              alla piattaforma ADEMPIO.
+            </p>
+            <Button to={ADEMPIO_URL} icon="arrowUpRight" className="shrink-0 self-start md:self-auto">
+              Registrazione
+            </Button>
           </div>
         </div>
       </section>

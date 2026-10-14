@@ -67,11 +67,11 @@ export default function Servizi() {
             <div>
               <div aria-hidden="true" className="mb-6 h-px w-24 bg-brand md:w-40" />
               <p className="max-w-[56ch] text-[1.0625rem] leading-relaxed md:text-lg">
-                Consulta le Aree di Servizio e i relativi adempimenti. Per richiedere uno o più servizi rivolgiti al{' '}
+                &ldquo;Consulta le Aree di Servizio e i relativi adempimenti. Per richiedere uno o più servizi rivolgiti al{' '}
                 <strong className="font-extrabold">tuo funzionario commerciale DYLOG</strong> che ti assisterà nella
                 procedura di pre-registrazione alla piattaforma ADEMPIO. Successivamente, un operatore di Agenzia Impresa
                 provvederà a contattarti per completare la registrazione, fornirti le credenziali di accesso e dare
-                assistenza alle tue richieste di servizio.
+                assistenza alle tue richieste di servizio.&rdquo;
               </p>
             </div>
           </div>
